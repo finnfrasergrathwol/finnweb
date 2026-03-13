@@ -83,6 +83,7 @@ export default (() => {
         )}
 
         <link rel="icon" href={iconPath} />
+        <script src={joinSegments(baseDir, "theme-switcher.js")} defer></script>
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
 

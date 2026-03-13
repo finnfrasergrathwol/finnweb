@@ -19,8 +19,10 @@ async function mouseEnterHandler(
       strategy: "fixed",
       middleware: [inline({ x: clientX, y: clientY }), shift(), flip()],
     })
+    const navPinnedLeft = popoverElement.dataset.navPinnedLeft
+    const targetX = navPinnedLeft ? Number(navPinnedLeft) : x
     Object.assign(popoverElement.style, {
-      transform: `translate(${x.toFixed()}px, ${y.toFixed()}px)`,
+      transform: `translate(${targetX.toFixed()}px, ${y.toFixed()}px)`,
     })
   }
 
@@ -44,11 +46,49 @@ async function mouseEnterHandler(
   targetUrl.hash = ""
   targetUrl.search = ""
   const popoverId = `popover-${link.pathname}`
+  const customPopoverText = link.dataset.popoverText?.trim()
   const prevPopoverElement = document.getElementById(popoverId)
 
   // dont refetch if there's already a popover
   if (!!document.getElementById(popoverId)) {
     showPopover(prevPopoverElement as HTMLElement)
+    return
+  }
+
+  const popoverElement = document.createElement("div")
+  popoverElement.id = popoverId
+  popoverElement.classList.add("popover")
+  if (link.closest(".home-nav") || link.dataset.popoverLayout === "full") {
+    popoverElement.classList.add("nav-popover")
+    const linkRect = link.getBoundingClientRect()
+    const articleRect = (link.closest("article") as HTMLElement)?.getBoundingClientRect()
+    const bodyWidth = articleRect ? Math.ceil(articleRect.width) : Math.ceil(linkRect.width)
+    const pinnedLeft = articleRect ? Math.round(articleRect.left) : Math.round(linkRect.left)
+    popoverElement.style.setProperty("--nav-popover-width", `${bodyWidth}px`)
+    popoverElement.style.setProperty("--nav-popover-height", `${Math.ceil(linkRect.height)}px`)
+    popoverElement.dataset.navPinnedLeft = `${pinnedLeft}`
+    popoverElement.classList.add(customPopoverText ? "nav-popover-text" : "nav-popover-empty")
+  }
+  const popoverInner = document.createElement("div")
+  popoverInner.classList.add("popover-inner")
+  popoverElement.appendChild(popoverInner)
+
+  if (customPopoverText) {
+    const msg = document.createElement("div")
+    msg.classList.add("nav-popover-message")
+    msg.textContent = customPopoverText
+    popoverInner.appendChild(msg)
+
+    if (!!document.getElementById(popoverId)) {
+      return
+    }
+
+    document.body.appendChild(popoverElement)
+    if (activeAnchor !== this) {
+      return
+    }
+
+    showPopover(popoverElement)
     return
   }
 
@@ -59,14 +99,7 @@ async function mouseEnterHandler(
   if (!response) return
   const [contentType] = response.headers.get("Content-Type")!.split(";")
   const [contentTypeCategory, typeInfo] = contentType.split("/")
-
-  const popoverElement = document.createElement("div")
-  popoverElement.id = popoverId
-  popoverElement.classList.add("popover")
-  const popoverInner = document.createElement("div")
-  popoverInner.classList.add("popover-inner")
   popoverInner.dataset.contentType = contentType ?? undefined
-  popoverElement.appendChild(popoverInner)
 
   switch (contentTypeCategory) {
     case "image":
