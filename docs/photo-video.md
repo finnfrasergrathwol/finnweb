@@ -34,8 +34,4 @@ title: photo & video
   <a class="internal" data-nav-target="sounds-samples" data-popover-text="sounds of my surroundings, and songs made from them" href="./sounds-samples">sounds & samples</a>
 </nav>
 
-<div class="interest-item" style="margin-left:0">in progress: here are some examples</div>
-
-![grizzly bears](./images/grizzly-bears.png)
-
-![bald eagles](./images/bald-eagles.png)
+<div class="cms-slot" data-page="photo-video" data-section-key="media"></div>

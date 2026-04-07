@@ -34,16 +34,4 @@ title: blogs & papers
   <a class="internal" data-nav-target="sounds-samples" data-popover-text="sounds of my surroundings, and songs made from them" href="./sounds-samples">sounds & samples</a>
 </nav>
 
-<div class="section-heading">blogs</div>
-<div class="section-caption">longer-form exposition intended for a wide spectrum of readers</div>
-
-<div class="interest-item" style="margin-left:0">This is in progress, but future writings will be:</div>
-<div class="interest-item" style="margin-left:1.2rem">what everyone could learn from string theory</div>
-<div class="interest-item" style="margin-left:1.2rem">high dimensional spaces are real (or complex)</div>
-<div class="interest-item" style="margin-left:1.2rem">why topology stops you from falling through your chair: the mathematical & physical origin of quantum spin</div>
-
-<div class="section-heading">papers</div>
-<div class="section-caption">published work & arxiv preprints</div>
-
-<div class="interest-item" style="margin-left:0">In preparation:</div>
-<div class="interest-item" style="margin-left:1.2rem">Untwist of the Topological Quantum Gravity of Ricci Flow (with Petr Horava of BCTP)</div>
+<div class="cms-slot" data-page="blogs-papers" data-section-key="all"></div>

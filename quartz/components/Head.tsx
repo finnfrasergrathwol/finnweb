@@ -84,6 +84,11 @@ export default (() => {
 
         <link rel="icon" href={iconPath} />
         <script src={joinSegments(baseDir, "theme-switcher.js")} defer></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+          defer
+        ></script>
+        <script src={joinSegments(baseDir, "static/admin.js")} defer></script>
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
 

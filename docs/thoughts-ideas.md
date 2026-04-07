@@ -34,14 +34,4 @@ title: thoughts & ideas
   <a class="internal" data-nav-target="sounds-samples" data-popover-text="sounds of my surroundings, and songs made from them" href="./sounds-samples">sounds & samples</a>
 </nav>
 
-<div class="section-heading">what i'm thinking about this <span class="week-trigger">week<select class="week-select" onchange="document.querySelectorAll('.week-entry').forEach(e=>e.style.display='none');var s=document.getElementById('week-'+this.value);if(s)s.style.display='block';">
-    <option value="2026-03-10">march 10, 2026</option>
-  </select></span></div>
-
-<div id="week-2026-03-10" class="week-entry" style="display:block;">
-<div class="interest-item" style="margin-left:0">In progress - will be added soon!</div>
-</div>
-
-<div class="section-heading" style="margin-top:2.4rem;">ideas to work on next</div>
-
-<div class="interest-item" style="margin-left:0">In progress - will be added soon!</div>
+<div class="cms-slot" data-page="thoughts-ideas" data-section-key="all"></div>

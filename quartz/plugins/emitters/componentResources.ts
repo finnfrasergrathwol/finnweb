@@ -337,10 +337,10 @@ export const ComponentResources: QuartzEmitterPlugin = () => {
 
       yield write({
         ctx,
-        slug: "index" as FullSlug,
+        slug: "styles" as FullSlug,
         ext: ".css",
         content: transform({
-          filename: "index.css",
+          filename: "styles.css",
           code: Buffer.from(stylesheet),
           minify: true,
           targets: {
