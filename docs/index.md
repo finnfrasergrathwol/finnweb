@@ -1,6 +1,6 @@
-<!-- ---
-# title: Home
---- -->
+---
+title: finn
+---
 
 <div class="title-row">
   <h1 class="page-heading">finn fraser grathwol</h1>
